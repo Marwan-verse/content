@@ -32,7 +32,7 @@ For URL font sources it allows authors to trigger when the remote font is fetche
 - {{domxref("FontFace.lineGapOverride")}}
   - : A string that retrieves or sets the _line-gap metric_ of the font. It is equivalent to the {{cssxref("@font-face/line-gap-override", "line-gap-override")}} descriptor.
 - {{domxref("FontFace.sizeAdjust")}}
-  - : A string that retrieves or sets a multiplier for the font glyph outlines and metrics. It is equivalent to the {{cssxref("@font-face/size-adjust", "size-adjust")}} descriptor.
+  - : A string that retrieves or sets a multiplier for the glyph outlines and metrics associated with the font. It is equivalent to the {{cssxref("@font-face/size-adjust", "size-adjust")}} descriptor.
 - {{domxref("FontFace.loaded")}} {{ReadOnlyInline}}
   - : Returns a {{jsxref("Promise")}} that resolves with the current `FontFace` object when the font specified in the object's constructor is done loading or rejects with a `SyntaxError` {{domxref("DOMException")}}.
 - {{domxref("FontFace.status")}} {{ReadOnlyInline}}
