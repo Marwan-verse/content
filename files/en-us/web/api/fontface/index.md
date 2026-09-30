@@ -31,6 +31,8 @@ For URL font sources it allows authors to trigger when the remote font is fetche
   - : A string that retrieves or sets infrequently used font features that are not available from a font's variant properties. It is equivalent to the CSS {{cssxref("font-feature-settings")}} property.
 - {{domxref("FontFace.lineGapOverride")}}
   - : A string that retrieves or sets the _line-gap metric_ of the font. It is equivalent to the {{cssxref("@font-face/line-gap-override", "line-gap-override")}} descriptor.
+- {{domxref("FontFace.sizeAdjust")}}
+  - : A string that retrieves or sets a multiplier for the font glyph outlines and metrics. It is equivalent to the {{cssxref("@font-face/size-adjust", "size-adjust")}} descriptor.
 - {{domxref("FontFace.loaded")}} {{ReadOnlyInline}}
   - : Returns a {{jsxref("Promise")}} that resolves with the current `FontFace` object when the font specified in the object's constructor is done loading or rejects with a `SyntaxError` {{domxref("DOMException")}}.
 - {{domxref("FontFace.status")}} {{ReadOnlyInline}}
@@ -53,7 +55,7 @@ For URL font sources it allows authors to trigger when the remote font is fetche
 ## Examples
 
 The code below defines a font face using data at the URL "my-font.woff" with a few font descriptors.
-Just to show how it works, we then define the `stretch` descriptor using a property.
+The example also shows how to set descriptors using properties.
 
 ```js
 // Define a FontFace
@@ -63,6 +65,7 @@ const font = new FontFace("my-font", 'url("my-font.woff")', {
 });
 
 font.stretch = "condensed";
+font.sizeAdjust = "90%";
 ```
 
 Next we load the font using {{domxref("FontFace.load()")}} and use the returned promise to track completion or report an error.
