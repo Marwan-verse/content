@@ -15,8 +15,8 @@ The **Web Storage API** provides mechanisms by which browsers can store key/valu
 
 The two mechanisms within Web Storage are as follows:
 
-- `sessionStorage` is partitioned by browser tabs and by {{glossary("origin")}}. The main document, and all embedded {{glossary("browsing context", "browsing contexts")}} (iframes), are grouped by their origin and each origin has access to its own separate storage area. Closing the browser tab destroys all `sessionStorage` data associated with that tab.
-- `localStorage` is partitioned by {{glossary("origin")}} only. All documents with the same origin have access to the same `localStorage` area, and it persists even when the browser is closed and reopened.
+- `sessionStorage` is scoped by {{glossary("origin")}} and the top-level browsing context (usually a browser tab). In a given top-level browsing context, documents of the same origin share a session storage area. Closing the context destroys the `sessionStorage` data associated with it.
+- `localStorage` is scoped by {{glossary("origin")}} in the usual first-party case. Documents with the same origin share a storage area, and its data persists across browser sessions. In third-party contexts, browser privacy policies may additionally partition storage by the top-level site or restrict access.
 
 These mechanisms are available via the {{domxref("Window.sessionStorage")}} and {{domxref("Window.localStorage")}} properties. Accessing one of these will return an instance of a {{domxref("Storage")}} object, through which data items can be set, retrieved and removed. A different storage object is used for the `sessionStorage` and `localStorage` for each origin — they function and are controlled separately.
 
@@ -29,7 +29,7 @@ Developers should be cautious when performing operations on `sessionStorage` or 
 Asynchronous alternatives, such as [IndexedDB](/en-US/docs/Web/API/IndexedDB_API), may be more suitable for scenarios where performance is a concern or when dealing with larger datasets. These alternatives allow for non-blocking operations, enabling smoother user experiences and better performance in web applications.
 
 > [!NOTE]
-> Access to Web Storage from third-party IFrames is denied if the user has [disabled third-party cookies](https://support.mozilla.org/en-US/kb/third-party-cookies-firefox-tracking-protection).
+> Browsers differ in how they handle Web Storage from third-party iframes. They may partition it by the top-level site or restrict or deny access, even when the user has not disabled cookies. See [Firefox's state partitioning guide](/en-US/docs/Web/Privacy/Guides/State_Partitioning), [Chrome's storage partitioning update](https://developer.chrome.com/blog/chrome-115-beta), and [WebKit's tracking prevention documentation](https://webkit.org/tracking-prevention/).
 
 ## Determining storage access by a third party
 
